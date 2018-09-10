@@ -17,15 +17,12 @@ class Oystercard
 
   def touch_in(entry_station)
     raise "Need minimum balance of £#{MIN_BALANCE}" if @balance < MIN_BALANCE
-    @journey = {}
-    @journey[:entry_station] = entry_station
+    start_journey(entry_station)
   end
 
   def touch_out(exit_station)
     deduct(MIN_FARE)
-    @journey[:exit_station] = exit_station
-    @journeys.push(@journey)
-    @journey = {}
+    complete_journey(exit_station)
   end
 
   def in_journey?
@@ -40,5 +37,16 @@ class Oystercard
 
   def deduct(amount)
     @balance -= amount
+  end
+
+  def start_journey(entry_station)
+    @journey = {}
+    @journey[:entry_station] = entry_station
+  end
+
+  def complete_journey(exit_station)
+    @journey[:exit_station] = exit_station
+    @journeys.push(@journey)
+    @journey = {}
   end
 end

@@ -76,7 +76,7 @@ describe Oystercard do
       subject.top_up(minimum_balance)
       subject.touch_in(entry_station)
       subject.touch_out(exit_station)
-      expect(subject.journeys).to include({entry_station: entry_station, exit_station: exit_station})
+      expect(subject.journeys).to include(entry_station: entry_station, exit_station: exit_station)
     end
   end
 end
