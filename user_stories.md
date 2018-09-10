@@ -29,3 +29,15 @@ card = Oystercard.new
 card.top_up(90)
 card.top_up(1) # Error
 ```
+
+In order to pay for my journey
+As a customer
+I need my fare deducted from my card
+
+```
+load './lib/oystercard.rb'
+card = Oystercard.new
+card.top_up(50)
+card.deduct(20)
+card.balance == 30 # true
+```

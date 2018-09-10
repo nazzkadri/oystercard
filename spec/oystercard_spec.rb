@@ -20,4 +20,11 @@ describe "top_up" do
   end
 end
 
+describe "deduct" do
+  it "deducts amount from the card" do
+    subject.top_up(50)
+    expect { subject.deduct 20 }.to change{ subject.balance }.by -20
+  end
+end
+
 end
