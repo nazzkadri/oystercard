@@ -41,3 +41,27 @@ card.top_up(50)
 card.deduct(20)
 card.balance == 30 # true
 ```
+
+In order to get through the barriers.
+As a customer
+I need to touch in and out.
+
+```
+load './lib/oystercard.rb'
+card = Oystercard.new
+card.touch_in
+card_in_use == true
+card.in_journey? == true
+card.touch_out
+card_in_use == false # true
+```
+
+In order to pay for my journey
+As a customer
+I need to have the minimum amount (£1) for a single journey.
+
+```
+load './lib/oystercard.rb'
+card = Oystercard.new
+card.touch_in # Error
+```
