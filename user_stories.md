@@ -78,3 +78,15 @@ card.touch_in
 card.touch_out
 card.balance == 0 # true
 ```
+
+In order to pay for my journey
+As a customer
+I need to know where I've travelled from
+
+```
+load './lib/oystercard.rb'
+card = Oystercard.new
+card.top_up(1)
+card.touch_in("london bridge")
+card.in_journey? == 'london bridge'
+```
