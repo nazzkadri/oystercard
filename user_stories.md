@@ -90,3 +90,17 @@ card.top_up(1)
 card.touch_in("london bridge")
 card.in_journey? == 'london bridge'
 ```
+In order to know where I have been
+As a customer
+I want to see all my previous trips
+
+```
+load './lib/oystercard.rb'
+card = Oystercard.new
+card.top_up(1)
+card.touch_in('london bridge')
+card.touch_out('Barbican')
+card.journey == ['london bridge', 'Barbican']
+
+
+```
