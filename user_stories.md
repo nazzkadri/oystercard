@@ -65,3 +65,16 @@ load './lib/oystercard.rb'
 card = Oystercard.new
 card.touch_in # Error
 ```
+
+In order to pay for my journey
+As a customer
+When my journey is complete, I need the correct amount deducted from my card
+
+```
+load './lib/oystercard.rb'
+card = Oystercard.new
+card.top_up(1)
+card.touch_in
+card.touch_out
+card.balance == 0 # true
+```

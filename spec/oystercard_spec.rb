@@ -21,13 +21,6 @@ describe "top_up" do
   end
 end
 
-describe "deduct" do
-  it "deducts amount from the card" do
-    subject.top_up(50)
-    expect { subject.deduct 20 }.to change{ subject.balance }.by -20
-  end
-end
-
 describe 'touch_in' do
   it 'can touch in' do
     subject.top_up(min_balance)
@@ -46,6 +39,12 @@ describe 'touch_out' do
     subject.touch_in
     subject.touch_out
     expect(subject).not_to be_in_journey
+  end
+
+  it 'reduces balance by minimum fare' do
+    subject.top_up(min_balance)
+    subject.touch_in
+    expect { subject.touch_out }.to change { subject.balance }.by -Oystercard::MIN_FARE
   end
 end
 
