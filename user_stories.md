@@ -101,6 +101,27 @@ card.top_up(1)
 card.touch_in('london bridge')
 card.touch_out('Barbican')
 card.journey == ['london bridge', 'Barbican']
+```
 
+Create a Journey class.
+
+```
+load './lib/journey.rb'
+journey.new
+```
+
+In order to be charged correctly
+As a customer
+I need a penalty charge deducted if I fail to touch in or out
+
+```
+load './lib/journey.rb'
+load './lib/oystercard.rb'
+card = Oystercard.new
+card.top_up(10)
+card.touch_in('london bridge')
+card.touch_in('knightsbridge')
+card.touch_out
+card.balance # 3
 
 ```
